@@ -1,9 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package src;
+
+import java.util.Random;
+import src.SortableArrayHolderInterface.*;
 
 /**
  *
@@ -11,6 +9,35 @@ package src;
  */
 public class TestApp {
     public static void main(String[] args)
+    {
+        ComparableArrayHolder<Integer> theArray = new ComparableArrayHolder<>(10);
+        Random r = new Random();
+        for(int i = 0; i < theArray.size(); i++)
+        {
+            theArray.add(r.nextInt(100));
+        }
+        System.out.println("Current contents of the array holder:");
+        System.out.println(theArray);
+        
+        theArray.sort(SortType.BUBBLE);
+        
+        System.out.println("\nCurrent contents of the array holder(after bubble sort):");
+        System.out.println(theArray);
+        
+        System.out.println("\nMax of structure:");
+        System.out.println(theArray.max());
+        theArray.delete(0);
+        
+        System.out.println("\nCurrent contents of the array holder:");
+        System.out.println(theArray);
+        
+        theArray.delete(1, true);
+        
+        System.out.println("\nCurrent contents of the array holder:");
+        System.out.println(theArray);
+    }
+    
+    private static void insertionSortTest()
     {
         Integer[] someInts = new Integer[10];
         someInts[0] = 4;
