@@ -1,4 +1,4 @@
-package src;
+package data;
 
 /**
  *
@@ -15,8 +15,6 @@ public interface ArrayHolderInterface<T> {
     void add(T element);
     
     int indexOf(T element);
-    
-    T max();
     
     String toString();
 }

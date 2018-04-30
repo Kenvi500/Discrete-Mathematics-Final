@@ -1,4 +1,4 @@
-package src;
+package data;
 
 /**
  *
@@ -96,9 +96,8 @@ public class Algorithms {
     }
     
     public static <T extends Comparable<T>> void insertionSort(T[] theArray)
-    {
-        throw new UnsupportedOperationException("Operation not supported at this time");
-        /**T m;
+    {        
+        T temp;
         for(int j = 1; j < theArray.length; j++)
         {
             int i = 0;
@@ -106,11 +105,11 @@ public class Algorithms {
             {
                 i++;
             }
-            m = theArray[j];
-            for(int k = 0; k < j - i - 1; k++)
+            temp = theArray[j];
+            for(int k = 0; k < (j - i); k++)
                 theArray[j - k] = theArray[j - k - 1];
-            theArray[i] = m;
-        }**/
+            theArray[i] = temp;
+        }
             
     }
 }

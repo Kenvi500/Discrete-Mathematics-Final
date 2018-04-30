@@ -1,12 +1,13 @@
-package src;
+package data;
 
 import java.util.Random;
 
 /**
- * NOTE: CONSIDER ADDING ERROR CHECKING
+ * NOTES: CONSIDER ADDING ERROR CHECKING
+ *        CREATE SAHPLUS WHICH WILL HAVE MAX, SHUFFLE, ETC. AND EXTENDS SAHI 
  * @author Kelvin Bonilla
  */
-public class ComparableArrayHolder<T extends Comparable<T>> implements SortableArrayHolderInterface<T> {
+public class ComparableArrayHolder<T extends Comparable<T>> implements SAHIPlus<T> {
     private T[] array;
     private int lastIndex; // recent index position with data
     private SortState curSortState;
@@ -58,6 +59,7 @@ public class ComparableArrayHolder<T extends Comparable<T>> implements SortableA
      * @param index
      * @param shift 
      */
+    @Override
     public void delete(int index, boolean shift){
         if(shift){
             array[index] = null;
@@ -97,6 +99,7 @@ public class ComparableArrayHolder<T extends Comparable<T>> implements SortableA
      * @param searchType
      * @return 
      */
+    @Override
     public int indexOf(T element, SearchType searchType){
         if(searchType == SearchType.BINARY && curSortState == SortState.SORTED)
             return Algorithms.binarySearch(array, element);
@@ -119,6 +122,7 @@ public class ComparableArrayHolder<T extends Comparable<T>> implements SortableA
     /**
      * 
      */
+    @Override
     public void shuffle(){
         shuffleArray(array);
     }
