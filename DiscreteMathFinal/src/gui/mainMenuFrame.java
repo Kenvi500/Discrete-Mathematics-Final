@@ -14,6 +14,8 @@ import javax.swing.JList;
  */
 public class mainMenuFrame extends javax.swing.JFrame {
 
+    // list of all of the frames goes here
+    
     /**
      * Creates new form mainMenuFrame
      */
@@ -38,13 +40,13 @@ public class mainMenuFrame extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         storedDataLst = new javax.swing.JList<>();
         algoNameLbl = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        algoLst = new javax.swing.JList();
         backBtn = new javax.swing.JButton();
         nxtBtn = new javax.swing.JButton();
         checkDataBtn = new javax.swing.JButton();
         storeDataBtn = new javax.swing.JButton();
         delDataBtn = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        algoLst = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Main Menu");
@@ -61,9 +63,6 @@ public class mainMenuFrame extends javax.swing.JFrame {
         algoNameLbl.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         algoNameLbl.setText("Algorithms");
 
-        algoLst.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jScrollPane2.setViewportView(algoLst);
-
         backBtn.setText("Back");
 
         nxtBtn.setText("Next");
@@ -79,16 +78,18 @@ public class mainMenuFrame extends javax.swing.JFrame {
 
         delDataBtn.setText("Delete Data");
 
+        algoLst.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        algoLst.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jScrollPane3.setViewportView(algoLst);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(59, 59, 59)
-                .addComponent(storedDataLbl)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(algoNameLbl)
-                .addGap(68, 68, 68))
             .addGroup(layout.createSequentialGroup()
                 .addGap(128, 128, 128)
                 .addComponent(combinationLbl)
@@ -106,11 +107,17 @@ public class mainMenuFrame extends javax.swing.JFrame {
                 .addComponent(backBtn)
                 .addGap(14, 14, 14))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(59, 59, 59)
+                .addComponent(storedDataLbl)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(algoNameLbl)
+                .addGap(68, 68, 68))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(34, 34, 34)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37))
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -123,15 +130,18 @@ public class mainMenuFrame extends javax.swing.JFrame {
                     .addComponent(algoNameLbl))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(backBtn)
-                    .addComponent(nxtBtn)
-                    .addComponent(checkDataBtn)
-                    .addComponent(storeDataBtn)
-                    .addComponent(delDataBtn))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(backBtn)
+                            .addComponent(nxtBtn)
+                            .addComponent(checkDataBtn)
+                            .addComponent(storeDataBtn)
+                            .addComponent(delDataBtn)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -140,24 +150,24 @@ public class mainMenuFrame extends javax.swing.JFrame {
 
     private void populateAlgorithms(String[] theArray)
     {
-        DefaultListModel model = new DefaultListModel();
+        DefaultListModel<String> model = new DefaultListModel<>();
         for(int i = 0; i < theArray.length; i++)
             model.addElement(theArray[i]);
-        algoLst = new JList(model);
+        algoLst.setModel(model);
     }
     private void storeDataBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_storeDataBtnActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_storeDataBtnActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JList algoLst;
+    private javax.swing.JList<String> algoLst;
     private javax.swing.JLabel algoNameLbl;
     private javax.swing.JButton backBtn;
     private javax.swing.JButton checkDataBtn;
     private javax.swing.JLabel combinationLbl;
     private javax.swing.JButton delDataBtn;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JButton nxtBtn;
     private javax.swing.JButton storeDataBtn;
     private javax.swing.JLabel storedDataLbl;

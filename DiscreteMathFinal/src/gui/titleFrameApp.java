@@ -10,13 +10,13 @@ import javax.swing.JFrame;
 public class titleFrameApp extends javax.swing.JFrame {
 
     private JFrame mainMenu;
-    private String[] algorithms = new String[]{"Bubble Sort","Insertion Sort","Linear Search","Binary Search"};
+    private String[] algorithmNames = new String[]{"Bubble Sort","Insertion Sort","Linear Search","Binary Search"};
     /**
      * Creates new form titleFrameApp
      */
     public titleFrameApp() {
         initComponents();
-        mainMenu = new mainMenuFrame(algorithms);
+        mainMenu = new mainMenuFrame(algorithmNames);
     }
 
     /**
@@ -137,7 +137,9 @@ public class titleFrameApp extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new titleFrameApp().setVisible(true);
+                titleFrameApp title = new titleFrameApp();
+                title.setVisible(true);
+                title.setLocationRelativeTo(null);
             }
         });
     }
