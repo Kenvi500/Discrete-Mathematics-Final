@@ -6,23 +6,23 @@
 package gui;
 
 import javax.swing.DefaultListModel;
-import javax.swing.JList;
+import javax.swing.JFrame;
 
 /**
  *
  * @author Kelvin Bonilla
  */
-public class mainMenuFrame extends javax.swing.JFrame {
-
-    // list of all of the frames goes here
+public class MainMenuFrame extends javax.swing.JFrame {
+    private final javax.swing.JFrame titleFrame;
+    // Reminders: Need String[] for Array Name
+    //            Need Actual ArrayHolders Alligned With Each Array Name
     
     /**
      * Creates new form mainMenuFrame
      */
-    public mainMenuFrame(String[] theAlgorithms) {
+    public MainMenuFrame(String[] theAlgorithms, javax.swing.JFrame titleFrame) {
         initComponents();
-        this.setVisible(false);
-        this.setEnabled(false);
+        this.titleFrame = titleFrame;
         populateAlgorithms(theAlgorithms);
     }
 
@@ -64,10 +64,25 @@ public class mainMenuFrame extends javax.swing.JFrame {
         algoNameLbl.setText("Algorithms");
 
         backBtn.setText("Back");
+        backBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backBtnActionPerformed(evt);
+            }
+        });
 
         nxtBtn.setText("Next");
+        nxtBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nxtBtnActionPerformed(evt);
+            }
+        });
 
         checkDataBtn.setText("Check Data");
+        checkDataBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkDataBtnActionPerformed(evt);
+            }
+        });
 
         storeDataBtn.setText("Store Data");
         storeDataBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -77,6 +92,11 @@ public class mainMenuFrame extends javax.swing.JFrame {
         });
 
         delDataBtn.setText("Delete Data");
+        delDataBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                delDataBtnActionPerformed(evt);
+            }
+        });
 
         algoLst.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -129,19 +149,16 @@ public class mainMenuFrame extends javax.swing.JFrame {
                     .addComponent(storedDataLbl)
                     .addComponent(algoNameLbl))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(backBtn)
-                            .addComponent(nxtBtn)
-                            .addComponent(checkDataBtn)
-                            .addComponent(storeDataBtn)
-                            .addComponent(delDataBtn)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(backBtn)
+                    .addComponent(nxtBtn)
+                    .addComponent(checkDataBtn)
+                    .addComponent(storeDataBtn)
+                    .addComponent(delDataBtn))
                 .addContainerGap())
         );
 
@@ -155,10 +172,32 @@ public class mainMenuFrame extends javax.swing.JFrame {
             model.addElement(theArray[i]);
         algoLst.setModel(model);
     }
+    //private void openPopup(JFrame frame);
+    
+    
     private void storeDataBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_storeDataBtnActionPerformed
+        TitleFrameApp.displayFrame(new Array_Integer_Popup(this), this);
         // TODO add your handling code here:
     }//GEN-LAST:event_storeDataBtnActionPerformed
 
+    private void delDataBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delDataBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_delDataBtnActionPerformed
+
+    private void checkDataBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkDataBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_checkDataBtnActionPerformed
+
+    private void nxtBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nxtBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nxtBtnActionPerformed
+
+    private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
+        // TODO add your handling code here:
+        TitleFrameApp.displayFrame(titleFrame, this);
+    }//GEN-LAST:event_backBtnActionPerformed
+
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JList<String> algoLst;
     private javax.swing.JLabel algoNameLbl;
