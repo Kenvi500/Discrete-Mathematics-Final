@@ -7,16 +7,16 @@ import javax.swing.JFrame;
  *
  * @author Kelvin Bonilla
  */
-public class titleFrameApp extends javax.swing.JFrame {
+public class TitleFrameApp extends javax.swing.JFrame {
 
     private JFrame mainMenu;
     private String[] algorithmNames = new String[]{"Bubble Sort","Insertion Sort","Linear Search","Binary Search"};
     /**
      * Creates new form titleFrameApp
      */
-    public titleFrameApp() {
+    public TitleFrameApp() {
         initComponents();
-        mainMenu = new mainMenuFrame(algorithmNames);
+        mainMenu = new MainMenuFrame(algorithmNames, this);
     }
 
     /**
@@ -101,12 +101,18 @@ public class titleFrameApp extends javax.swing.JFrame {
     }//GEN-LAST:event_exitBtnActionPerformed
 
     private void startBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startBtnActionPerformed
-        this.setEnabled(false);
-        this.setVisible(false);
-        mainMenu.setEnabled(true);
-        mainMenu.setVisible(true);        
+        this.displayFrame(mainMenu, this);
     }//GEN-LAST:event_startBtnActionPerformed
-
+    public static void displayFrame(JFrame theFrameToOpen, JFrame theFrameToClose)
+    {
+        theFrameToClose.setEnabled(false);
+        theFrameToClose.setVisible(false);
+        
+        theFrameToOpen.setEnabled(true);
+        theFrameToOpen.setVisible(true);
+        theFrameToOpen.setLocationRelativeTo(null);
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -124,20 +130,21 @@ public class titleFrameApp extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(titleFrameApp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TitleFrameApp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(titleFrameApp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TitleFrameApp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(titleFrameApp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TitleFrameApp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(titleFrameApp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TitleFrameApp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                titleFrameApp title = new titleFrameApp();
+                TitleFrameApp title = new TitleFrameApp();
                 title.setVisible(true);
                 title.setLocationRelativeTo(null);
             }
