@@ -69,17 +69,22 @@
                   <Component id="algoNameLbl" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="jScrollPane1" max="32767" attributes="0"/>
-                  <Component id="jScrollPane3" pref="0" max="32767" attributes="0"/>
-              </Group>
-              <EmptySpace pref="55" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="backBtn" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="nxtBtn" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="checkDataBtn" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="storeDataBtn" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="delDataBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="55" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="backBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="nxtBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="checkDataBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="storeDataBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="delDataBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Component id="jScrollPane3" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -135,25 +140,16 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Back"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="backBtnActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="nxtBtn">
       <Properties>
         <Property name="text" type="java.lang.String" value="Next"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nxtBtnActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="checkDataBtn">
       <Properties>
         <Property name="text" type="java.lang.String" value="Check Data"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="checkDataBtnActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="storeDataBtn">
       <Properties>
@@ -167,9 +163,6 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Delete Data"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="delDataBtnActionPerformed"/>
-      </Events>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane3">
       <AuxValues>
