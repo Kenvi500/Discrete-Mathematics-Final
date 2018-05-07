@@ -5,9 +5,6 @@
  */
 package gui;
 
-import javax.swing.DefaultListModel;
-import javax.swing.JFrame;
-
 /**
  *
  * @author Kelvin Bonilla
@@ -167,7 +164,7 @@ public class MainMenuFrame extends javax.swing.JFrame {
 
     private void populateAlgorithms(String[] theArray)
     {
-        DefaultListModel<String> model = new DefaultListModel<>();
+        javax.swing.DefaultListModel<String> model = new javax.swing.DefaultListModel<>();
         for(int i = 0; i < theArray.length; i++)
             model.addElement(theArray[i]);
         algoLst.setModel(model);

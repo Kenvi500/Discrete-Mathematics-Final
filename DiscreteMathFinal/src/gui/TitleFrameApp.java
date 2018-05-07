@@ -1,15 +1,12 @@
 package gui;
 
-import java.util.ArrayList;
-import javax.swing.JFrame;
-
 /**
  *
  * @author Kelvin Bonilla
  */
 public class TitleFrameApp extends javax.swing.JFrame {
 
-    private JFrame mainMenu;
+    private javax.swing.JFrame mainMenu;
     private String[] algorithmNames = new String[]{"Bubble Sort","Insertion Sort","Linear Search","Binary Search"};
     /**
      * Creates new form titleFrameApp
@@ -103,7 +100,8 @@ public class TitleFrameApp extends javax.swing.JFrame {
     private void startBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startBtnActionPerformed
         this.displayFrame(mainMenu, this);
     }//GEN-LAST:event_startBtnActionPerformed
-    public static void displayFrame(JFrame theFrameToOpen, JFrame theFrameToClose)
+    
+    public static void displayFrame(javax.swing.JFrame theFrameToOpen, javax.swing.JFrame theFrameToClose)
     {
         theFrameToClose.setEnabled(false);
         theFrameToClose.setVisible(false);
@@ -112,6 +110,7 @@ public class TitleFrameApp extends javax.swing.JFrame {
         theFrameToOpen.setVisible(true);
         theFrameToOpen.setLocationRelativeTo(null);
     }
+    
     
     /**
      * @param args the command line arguments
