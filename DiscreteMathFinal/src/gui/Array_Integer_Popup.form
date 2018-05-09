@@ -76,6 +76,7 @@
     <Component class="javax.swing.JButton" name="arrayBtn">
       <Properties>
         <Property name="text" type="java.lang.String" value="Array"/>
+        <Property name="toolTipText" type="java.lang.String" value="This button will bring you to the &quot;Store An Array&quot; window"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="arrayBtnActionPerformed"/>
@@ -84,6 +85,7 @@
     <Component class="javax.swing.JButton" name="intBtn">
       <Properties>
         <Property name="text" type="java.lang.String" value="Integer"/>
+        <Property name="toolTipText" type="java.lang.String" value="This button brings you to the &quot;Store An Integer&quot; window"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="intBtnActionPerformed"/>
@@ -92,6 +94,7 @@
     <Component class="javax.swing.JButton" name="backBtn">
       <Properties>
         <Property name="text" type="java.lang.String" value="Back"/>
+        <Property name="toolTipText" type="java.lang.String" value="Closes this window and brings you back to the Main Menu"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="backBtnActionPerformed"/>

@@ -12,19 +12,18 @@ package gui;
 public class StoreArrayFrame extends javax.swing.JFrame
 {
 
-    private final javax.swing.JFrame MAIN_MENU;
+    private final MainMenuFrame MAIN_MENU;
     /**
      * Creates new form StoreArrayFrame
      */
-    public StoreArrayFrame(javax.swing.JFrame mainMenu) {
+    public StoreArrayFrame(MainMenuFrame mainMenu) {
         initComponents();
         MAIN_MENU = mainMenu;
         setAllToolTips();
     }
 
     private void setAllToolTips() {
-        numElementsLbl.setToolTipText("This determines the number of elements the array will have, as well as the range of numbers the array will store (from 0 to 10/100/1000)");
-        arrayNameLbl.setToolTipText("The name that this array will be associated with back in the main menu.");
+        arrayNameLbl.setToolTipText(".");
         submitBtn.setToolTipText("Stores the array with the properties chosen.");
         backBtn.setToolTipText("Closes this window and returns you back to the \"Array or Integer?\" window.");
     }
@@ -40,7 +39,7 @@ public class StoreArrayFrame extends javax.swing.JFrame
         numElementBtnGroup = new javax.swing.ButtonGroup();
         tenElementsRadioBtn = new javax.swing.JRadioButton();
         hunElementsRadioBtn = new javax.swing.JRadioButton();
-        thouElementsRadioBtn = new javax.swing.JRadioButton();
+        fivHunElementsRadioBtn = new javax.swing.JRadioButton();
         numElementsLbl = new javax.swing.JLabel();
         arrayNameLbl = new javax.swing.JLabel();
         arrayNameTxtField = new javax.swing.JTextField();
@@ -58,31 +57,43 @@ public class StoreArrayFrame extends javax.swing.JFrame
         numElementBtnGroup.add(tenElementsRadioBtn);
         tenElementsRadioBtn.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         tenElementsRadioBtn.setText("10");
+        tenElementsRadioBtn.setToolTipText("Choice of a 10 element array, with numbers ranging from 0 to 10");
 
         numElementBtnGroup.add(hunElementsRadioBtn);
         hunElementsRadioBtn.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         hunElementsRadioBtn.setText("100");
+        hunElementsRadioBtn.setToolTipText("Choice of a 100 element array, with numbers ranging from 0 to 100");
 
-        numElementBtnGroup.add(thouElementsRadioBtn);
-        thouElementsRadioBtn.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        thouElementsRadioBtn.setText("1000");
+        numElementBtnGroup.add(fivHunElementsRadioBtn);
+        fivHunElementsRadioBtn.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        fivHunElementsRadioBtn.setText("500");
+        fivHunElementsRadioBtn.setToolTipText("Choice of a 500 element array, with numbers ranging from 0 to 500");
 
         numElementsLbl.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         numElementsLbl.setText("Number of Elements:");
+        numElementsLbl.setToolTipText("This determines the number of elements the array will have, as well as the range of numbers the array will store (from 0 to 10/100/1000)");
 
         arrayNameLbl.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         arrayNameLbl.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         arrayNameLbl.setText("Name of The Array:");
+        arrayNameLbl.setToolTipText("The name that this array will be associated with in the Main Menu");
 
         arrayNameTxtField.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         arrayNameTxtField.setText("[Enter Name Here]");
+        arrayNameTxtField.setToolTipText("The field used to type the name that this array will use");
         arrayNameTxtField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtFieldFocusGained(evt);
             }
         });
+        arrayNameTxtField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                enterKeyPressed(evt);
+            }
+        });
 
         backBtn.setText("Back");
+        backBtn.setToolTipText("Closes this window and brings you back to the \"Array or Integer?\" window");
         backBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backBtnActionPerformed(evt);
@@ -90,6 +101,7 @@ public class StoreArrayFrame extends javax.swing.JFrame
         });
 
         submitBtn.setText("Submit");
+        submitBtn.setToolTipText("Stores the array into the Main Menu");
         submitBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 submitBtnActionPerformed(evt);
@@ -120,7 +132,7 @@ public class StoreArrayFrame extends javax.swing.JFrame
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(hunElementsRadioBtn)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(thouElementsRadioBtn))
+                                .addComponent(fivHunElementsRadioBtn))
                             .addComponent(arrayNameTxtField))))
                 .addGap(25, 25, 25))
         );
@@ -131,7 +143,7 @@ public class StoreArrayFrame extends javax.swing.JFrame
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(hunElementsRadioBtn)
                     .addComponent(tenElementsRadioBtn)
-                    .addComponent(thouElementsRadioBtn)
+                    .addComponent(fivHunElementsRadioBtn)
                     .addComponent(numElementsLbl))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -156,10 +168,33 @@ public class StoreArrayFrame extends javax.swing.JFrame
     }//GEN-LAST:event_txtFieldFocusGained
 
     private void submitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitBtnActionPerformed
-        javax.swing.JOptionPane.showMessageDialog(this, "Not Supported Yet", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+        int size;
         
-        // Reminders: Reset Text Field Text
-        //            Return Information To The Main Menu
+        if(tenElementsRadioBtn.isSelected())
+            size = 10;
+        else if(hunElementsRadioBtn.isSelected())
+            size = 100;
+        else if(fivHunElementsRadioBtn.isSelected())
+            size = 500;
+        else
+        {
+            javax.swing.JOptionPane.showMessageDialog(this, "Number of elements haven't been chosen!", "Size Choice Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        data.SAHIPlus<Integer> theArray = access.DAO.getCompareableArrayHolder(size);
+        String theName = arrayNameTxtField.getText();
+        java.util.Random rand = new java.util.Random();
+        
+        for(int i = 0; i < size; i++)
+            theArray.add(rand.nextInt(size + 1));        
+        
+        MAIN_MENU.addData(theName, theArray);
+        
+        javax.swing.JOptionPane.showMessageDialog(this, theName + " has been stored.", "Array Submitted", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+        arrayNameTxtField.setText("[Enter Name Here]");
+        arrayNameTxtField.requestFocusInWindow();
+        
     }//GEN-LAST:event_submitBtnActionPerformed
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
@@ -172,15 +207,21 @@ public class StoreArrayFrame extends javax.swing.JFrame
         dispose();
     }//GEN-LAST:event_windowClosingEvt
 
+    private void enterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_enterKeyPressed
+        if(evt.getExtendedKeyCode() == java.awt.event.KeyEvent.VK_ENTER)
+            submitBtn.doClick();
+        arrayNameTxtField.requestFocusInWindow();
+    }//GEN-LAST:event_enterKeyPressed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel arrayNameLbl;
     private javax.swing.JTextField arrayNameTxtField;
     private javax.swing.JButton backBtn;
+    private javax.swing.JRadioButton fivHunElementsRadioBtn;
     private javax.swing.JRadioButton hunElementsRadioBtn;
     private javax.swing.ButtonGroup numElementBtnGroup;
     private javax.swing.JLabel numElementsLbl;
     private javax.swing.JButton submitBtn;
     private javax.swing.JRadioButton tenElementsRadioBtn;
-    private javax.swing.JRadioButton thouElementsRadioBtn;
     // End of variables declaration//GEN-END:variables
 }

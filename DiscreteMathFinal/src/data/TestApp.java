@@ -1,6 +1,6 @@
 package data;
 
-import access.ArrayHolderFactory;
+import access.DAO;
 import java.util.Random;
 import data.SortableArrayHolderInterface.*;
 
@@ -11,8 +11,15 @@ import data.SortableArrayHolderInterface.*;
 public class TestApp {
     public static void main(String[] args)
     {
-        arrayHolderTest2();
+        //arrayHolderTest2();
         //insertionSortTest();
+        //System.out.println(Algorithms.greatestCommonDivisor(108, 108));
+        java.util.ArrayList<String> testing = new java.util.ArrayList<>();
+        testing.add("Hell0");
+        testing.add("faggots");
+        testing.add("lol");
+        testing.remove(1);
+        System.out.println(testing.get(1));
     }
     
     private static void insertionSortTest()
@@ -65,7 +72,7 @@ public class TestApp {
     
     private static void arrayHolderTest2()
     {
-        SAHIPlus<Integer> array = ArrayHolderFactory.getCompareableArrayHolder(10);
+        SAHIPlus<Integer> array = DAO.getCompareableArrayHolder(10);
         for(int i = 10; i > 0; i--)
             array.add(i);
         System.out.println(array);

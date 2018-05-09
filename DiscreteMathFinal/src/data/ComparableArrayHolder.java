@@ -90,7 +90,9 @@ public class ComparableArrayHolder<T extends Comparable<T>> implements SAHIPlus<
      * @return 
      */
     @Override
-    public int indexOf(T element){
+    public int indexOf(T element)
+    // Precondition: data has already been sorted
+    {
         return indexOf(element, SearchType.BINARY);
     }
     /**
@@ -100,8 +102,10 @@ public class ComparableArrayHolder<T extends Comparable<T>> implements SAHIPlus<
      * @return 
      */
     @Override
-    public int indexOf(T element, SearchType searchType){
-        if(searchType == SearchType.BINARY && getCurSortState() == SortState.SORTED)
+    public int indexOf(T element, SearchType searchType)
+    // Precondition: Data has already been sorted
+    {
+        if(searchType == SearchType.BINARY)
             return Algorithms.binarySearch(array, element);
         else
             return Algorithms.linearSearch(array, element);
@@ -182,7 +186,5 @@ public class ComparableArrayHolder<T extends Comparable<T>> implements SAHIPlus<
     public SortState getCurSortState() {
         return curSortState;
     }
-    
-    
     
 }

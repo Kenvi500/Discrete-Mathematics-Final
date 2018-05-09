@@ -38,8 +38,8 @@ public class Algorithms {
     // Precondition: Strucutre is not empty
     {
         int i = 0;
-        int location = -1;
-        while(i <= theArray.length - 1 && element.compareTo(theArray[0]) != 0)
+        int location = 0;
+        while(i <= theArray.length - 1 && element.compareTo(theArray[i]) != 0)
         {
             i++;
             if(i <= theArray.length - 1)
@@ -67,11 +67,14 @@ public class Algorithms {
             m = (i + j)/2;
             if(element.compareTo(theArray[m]) > 0)
                 i = m + 1;
+            else if(element.compareTo(theArray[m]) == 0)
+            {
+                location = m;
+                return location;
+            }
             else
                 j = m;            
-        }
-        if(element.compareTo(theArray[m]) == 0)
-            location = m;
+        }        
         return location;
     }
     
@@ -111,5 +114,40 @@ public class Algorithms {
             theArray[i] = temp;
         }
             
+    }
+    
+    public static int greatestCommonDivisor(int a, int b)
+    // Precondition: Both a and b are non-negative integers
+    {
+        if(a == 0)
+            return b;
+        else if(b == 0)
+            return a;
+        else if(a == b)
+            return a;
+        else
+        {
+            if (a < b) 
+            {
+                while (b != 0) 
+                {
+                    int remainder = a % b;
+                    a = b;
+                    b = remainder;
+                }
+                return a;
+            } 
+            else if (b < a) 
+            {
+                while (a != 0) 
+                {
+                    int remainder = b % a;
+                    b = a;
+                    a = remainder;
+                }
+                return b;
+            }
+        }
+        return 0; // shouldn't get here
     }
 }

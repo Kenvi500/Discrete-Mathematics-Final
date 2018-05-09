@@ -9,6 +9,9 @@
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
   </SyntheticProperties>
+  <Events>
+    <EventHandler event="windowClosing" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="windowClosingEvt"/>
+  </Events>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -79,6 +82,7 @@
           <Font name="Dialog" size="14" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Integer To Store:"/>
+        <Property name="toolTipText" type="java.lang.String" value="The integer that is to be stored in the Main Menu"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="intNameLbl">
@@ -88,6 +92,7 @@
         </Property>
         <Property name="horizontalAlignment" type="int" value="2"/>
         <Property name="text" type="java.lang.String" value="Name of The Integer:"/>
+        <Property name="toolTipText" type="java.lang.String" value="The name that this integer will be associated with in the Main Menu"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="intNameTxtField">
@@ -96,9 +101,11 @@
           <Font name="Dialog" size="14" style="0"/>
         </Property>
         <Property name="text" type="java.lang.String" value="[Enter Name Here]"/>
+        <Property name="toolTipText" type="java.lang.String" value="The field used to type the name that this integer will use"/>
       </Properties>
       <Events>
         <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtFieldFocusGained"/>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="enterKeyPressed2"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="enterIntTxtField">
@@ -107,14 +114,17 @@
           <Font name="Dialog" size="14" style="0"/>
         </Property>
         <Property name="text" type="java.lang.String" value="[Enter Int Here]"/>
+        <Property name="toolTipText" type="java.lang.String" value="The field used for typing the integer"/>
       </Properties>
       <Events>
         <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtFieldFocusGained"/>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="enterKeyPressed1"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="backBtn">
       <Properties>
         <Property name="text" type="java.lang.String" value="Back"/>
+        <Property name="toolTipText" type="java.lang.String" value="Closes this window and brings you to the &quot;Array or Integer?&quot; window"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="backBtnActionPerformed"/>
@@ -123,6 +133,7 @@
     <Component class="javax.swing.JButton" name="submitBtn">
       <Properties>
         <Property name="text" type="java.lang.String" value="Submit"/>
+        <Property name="toolTipText" type="java.lang.String" value="Stores the integer into the Main Menu"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="submitBtnActionPerformed"/>

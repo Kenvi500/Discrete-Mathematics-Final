@@ -13,13 +13,13 @@ package gui;
 public class Array_Integer_Popup extends javax.swing.JFrame
 {
 
-    private final javax.swing.JFrame MAIN_MENU;
+    private final MainMenuFrame mainMenu;
     /**
      * Creates new form Array_Integer_Popup
      */
-    public Array_Integer_Popup(javax.swing.JFrame mainMenu) {
+    public Array_Integer_Popup(MainMenuFrame mainMenu) {
         initComponents();
-        MAIN_MENU = mainMenu;
+        this.mainMenu = mainMenu;
     }
 
     /**
@@ -50,6 +50,7 @@ public class Array_Integer_Popup extends javax.swing.JFrame
         arrayIntegerTxt.setBorder(null);
 
         arrayBtn.setText("Array");
+        arrayBtn.setToolTipText("This button will bring you to the \"Store An Array\" window");
         arrayBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 arrayBtnActionPerformed(evt);
@@ -57,6 +58,7 @@ public class Array_Integer_Popup extends javax.swing.JFrame
         });
 
         intBtn.setText("Integer");
+        intBtn.setToolTipText("This button brings you to the \"Store An Integer\" window");
         intBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 intBtnActionPerformed(evt);
@@ -64,6 +66,7 @@ public class Array_Integer_Popup extends javax.swing.JFrame
         });
 
         backBtn.setText("Back");
+        backBtn.setToolTipText("Closes this window and brings you back to the Main Menu");
         backBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backBtnActionPerformed(evt);
@@ -103,23 +106,22 @@ public class Array_Integer_Popup extends javax.swing.JFrame
     }// </editor-fold>//GEN-END:initComponents
 
     private void arrayBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_arrayBtnActionPerformed
-        TitleFrameApp.displayFrame(new StoreArrayFrame(MAIN_MENU), this);
+        TitleFrameApp.displayFrame(new StoreArrayFrame(mainMenu), this);
         dispose();
     }//GEN-LAST:event_arrayBtnActionPerformed
 
     private void intBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_intBtnActionPerformed
-        TitleFrameApp.displayFrame(new StoreIntFrame(MAIN_MENU), this);
+        TitleFrameApp.displayFrame(new StoreIntFrame(mainMenu), this);
         dispose();
     }//GEN-LAST:event_intBtnActionPerformed
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
-        TitleFrameApp.displayFrame(MAIN_MENU, this);
+        TitleFrameApp.displayFrame(mainMenu, this);
         dispose();
     }//GEN-LAST:event_backBtnActionPerformed
 
     private void windowClosingEvt(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_windowClosingEvt
-        TitleFrameApp.displayFrame(MAIN_MENU, this);
-        dispose();
+        backBtn.doClick();
     }//GEN-LAST:event_windowClosingEvt
 
 
