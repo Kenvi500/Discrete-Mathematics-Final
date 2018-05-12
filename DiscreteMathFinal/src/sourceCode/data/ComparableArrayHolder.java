@@ -1,63 +1,60 @@
-package data;
-
-import java.util.Random;
+package sourceCode.data;
 
 /**
- * NOTES: CONSIDER ADDING ERROR CHECKING
- *        CREATE SAHPLUS WHICH WILL HAVE MAX, SHUFFLE, ETC. AND EXTENDS SAHI 
+ * Defines a ComparableArrrayHolder that implements the sourceCode.access.SAHIAccess. SAHIAccess extends all interfaces found in sourceCode.data. 
  * @author Kelvin Bonilla
+ * @param <T> the data type of this ComparableArrayHolder. T must extend Comparable.
  */
-public class ComparableArrayHolder<T extends Comparable<T>> implements SAHIPlus<T> {
-    private T[] array;
+public class ComparableArrayHolder<T extends Comparable<T>> implements sourceCode.access.SAHIAccess<T> {
+    private T[] array;     // underlying array
     private int lastIndex; // recent index position with data
     private SortState curSortState;
     
-    private static int DEF_CAP = 50; // default capacity of an array
+    private static int DEF_CAP = 50; // default capacity of a ComparableArrayHolder
     
     /**
-     * 
-     * @param size 
+     * Constructor for this ComparableArrayHolder which manually takes in the size.
+     * @param size the size of this ComparableArrayHolder
      */
     public ComparableArrayHolder(int size){
         array = (T[]) new Comparable[size];
         lastIndex = -1;
         curSortState = SortState.UNSORTED;
     }
+    
     /**
-     * 
+     * Default constructor with a default capacity of 50.
      */
     public ComparableArrayHolder(){
         this(DEF_CAP);
     }
+    
     /**
-     * 
-     * @return 
+     * {@inheritDoc}
      */
     @Override
     public int size(){
         return array.length;
     }
+    
     /**
-     * 
-     * @param index
-     * @return 
+     * {@inheritDoc}
      */
     @Override
     public T get(int index){
         return array[index];
     }
+    
     /**
-     * 
-     * @param index 
+     * {@inheritDoc}
      */
     @Override
     public void delete(int index){
         this.delete(index, false);
     }
+    
     /**
-     * 
-     * @param index
-     * @param shift 
+     * {@inheritDoc}
      */
     @Override
     public void delete(int index, boolean shift){
@@ -76,43 +73,39 @@ public class ComparableArrayHolder<T extends Comparable<T>> implements SAHIPlus<
         else
             array[index] = null;
     }
+    
     /**
-     * 
-     * @param element 
+     * {@inheritDoc}
      */
     @Override
     public void add(T element){
         array[++lastIndex] = element;
     }
+    
     /**
-     * 
-     * @param element
-     * @return 
+     * {@inheritDoc}
      */
     @Override
     public int indexOf(T element)
-    // Precondition: data has already been sorted
     {
-        return indexOf(element, SearchType.BINARY);
+        return indexOf(element, SearchType.LINEAR);
     }
+    
     /**
-     * 
-     * @param element
-     * @param searchType
-     * @return 
+     * {@inheritDoc}
      */
     @Override
     public int indexOf(T element, SearchType searchType)
-    // Precondition: Data has already been sorted
+    // Precondition: Data has already been sorted (if using SearchType.BINARY)
     {
         if(searchType == SearchType.BINARY)
             return Algorithms.binarySearch(array, element);
         else
             return Algorithms.linearSearch(array, element);
     }
+    
     /**
-     * 
-     * @param st 
+     * {@inheritDoc}
      */
     @Override
     public void sort(SortType st)
@@ -123,40 +116,9 @@ public class ComparableArrayHolder<T extends Comparable<T>> implements SAHIPlus<
             Algorithms.insertionSort(array);
         curSortState = SortState.SORTED;
     }
+    
     /**
-     * 
-     */
-    @Override
-    public void shuffle(){
-        shuffleArray(array);
-    }
-    /**
-     * 
-     * @param toShuffle 
-     */
-    private void shuffleArray(T[] toShuffle) {
-        int n = toShuffle.length;
-        Random random = new Random();
-        random.nextInt();
-        for (int i = 0; i < n; i++) {
-            int change = i + random.nextInt(n - i);
-            swap(toShuffle, i, change);
-        }
-    }
-    /**
-     * 
-     * @param toShuffle
-     * @param index1
-     * @param index2 
-     */
-    private void swap(T[] toShuffle, int index1, int index2) {
-        T temp = toShuffle[index1];
-        toShuffle[index1] = toShuffle[index2];
-        toShuffle[index2] = temp;
-    }        
-    /**
-     * 
-     * @return 
+     * {@inheritDoc}
      */
     @Override
     public String toString(){
@@ -172,17 +134,17 @@ public class ComparableArrayHolder<T extends Comparable<T>> implements SAHIPlus<
     }
     
     /**
-     * 
-     * @return 
+     * {@inheritDoc}
      */
     @Override
     public T max(){
         return Algorithms.max(array);
     }
-
+    
     /**
-     * @return the curSortState
+     * {@inheritDoc}
      */
+    @Override
     public SortState getCurSortState() {
         return curSortState;
     }

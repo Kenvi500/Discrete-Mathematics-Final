@@ -1,9 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package gui;
+package sourceCode.gui;
 
 /**
  *
@@ -28,7 +23,7 @@ public class GCDFrame extends javax.swing.JFrame
 
     private int calculateGCD(int firstInt, int secondInt)
     {
-        return access.DAO.gcd(firstInt, secondInt);
+        return sourceCode.access.DAO.gcd(firstInt, secondInt);
     }
     
     /**
@@ -49,6 +44,7 @@ public class GCDFrame extends javax.swing.JFrame
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Calculate GCD");
+        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 windowClosingEvt(evt);

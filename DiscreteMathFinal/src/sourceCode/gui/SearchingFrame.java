@@ -1,11 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package gui;
-
-import data.SortableArrayHolderInterface;
+package sourceCode.gui;
 
 /**
  *
@@ -17,12 +10,12 @@ public class SearchingFrame extends javax.swing.JFrame
     private MainMenuFrame mainMenu;
     private String arrayName;
     private String searchType;
-    private data.SAHIPlus toBeSearched;
+    private sourceCode.access.SAHIAccess toBeSearched;
     
     /**
      * Creates new form SearchingFrame
      */
-    public SearchingFrame(MainMenuFrame mainMenu, String arrayName, String searchType, data.SAHIPlus toBeSearched) {
+    public SearchingFrame(MainMenuFrame mainMenu, String arrayName, String searchType, sourceCode.access.SAHIAccess toBeSearched) {
         initComponents();
         this.mainMenu = mainMenu;
         this.arrayName = arrayName;
@@ -52,6 +45,7 @@ public class SearchingFrame extends javax.swing.JFrame
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Searching For A Value");
+        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 windowClosingEvt(evt);
@@ -163,12 +157,12 @@ public class SearchingFrame extends javax.swing.JFrame
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    private int search(int searchFor, String searchType, data.SAHIPlus toBeSearched)
+    private int search(int searchFor, String searchType, sourceCode.access.SAHIAccess toBeSearched)
     {
         if(searchType.equalsIgnoreCase("Binary Search"))
             return toBeSearched.indexOf(searchFor);
         else
-            return toBeSearched.indexOf(searchFor, SortableArrayHolderInterface.SearchType.LINEAR);
+            return toBeSearched.indexOf(searchFor, sourceCode.access.SAHIAccess.SearchType.LINEAR);
     }
     private void initialDisplay(String arrayName, String searchtype)
     {

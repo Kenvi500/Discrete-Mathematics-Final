@@ -1,4 +1,4 @@
-package data;
+package sourceCode.data;
 
 /**
  *
@@ -7,9 +7,10 @@ package data;
 public class Algorithms {
     
     /**
-     * @param <T extends Comparable<T>> arguments must extend the Comparable interface
-     * @param theArray whose max value is wanted
-     * @return the maximum value of the structure
+     * The maximum algorithm, which gets the maximum value of the array passed to it.
+     * @param <T> the data type of the array passed to this function, must implement Comparable
+     * @param theArray the array whose max value is wanted
+     * @return the maximum value of theArray
      */
     public static <T extends Comparable<T>> T max(T[] theArray)
     // Precondition:  Structure is not empty
@@ -28,11 +29,11 @@ public class Algorithms {
     
     
     /**
-     * 
-     * @param <T extends Comparable<T>> arguments must extend the Comparable interface
-     * @param theArray that will be used in the linear search
+     * The linear search algorithm, which sequentially searches for an element.
+     * @param <T> the data type of theArray and the element, must implement Comparable and be the same type
+     * @param theArray theArray that will be sequentially searched through
      * @param element whose subscript is to be found in theArray
-     * @return the current subscript to the element found in the structure, or -1 indicating no such value was found
+     * @return the current subscript to the  first "element" found in the theArray, or -1 indicating no such value was found
      */
     public static <T extends Comparable<T>> int linearSearch(T[] theArray, T element)
     // Precondition: Strucutre is not empty
@@ -51,18 +52,21 @@ public class Algorithms {
     }
     
     /**
-     * 
-     * @return the current subscript to the element found in the structure, or -1 indicating no such value was found
+     * The binary search algorithm, which searches for an element in a sorted array using random-access.
+     * @param <T> the data type of the array and the element, must implement Comparable and be the same type
+     * @param theArray the array to be searched through
+     * @param element the element to search for
+     * @return the current subscript to the first "element" found in the structure, or -1 indicating no such value was found
      */
     public static <T extends Comparable<T>> int binarySearch(T[] theArray, T element)
     // Preconditions: Structure is not empty
-    //                Structure has been sorted in ascending value
+    //                Structure has been sorted in ascending order
     {
-        int i = 0;
-        int j = theArray.length - 1;
-        int m = -1;
-        int location = -1;
-        while(i < j)
+        int i = 0; // lower-end
+        int j = theArray.length - 1; // higher-end
+        int m; // mid
+        int location = -1; // location to be returned
+        while(i <= j)
         {
             m = (i + j)/2;
             if(element.compareTo(theArray[m]) > 0)
@@ -79,9 +83,9 @@ public class Algorithms {
     }
     
     /**
-     * 
-     * @param <T extends Comparable<T>> arguments must extend the Comparable interface
-     * @param theArray to be sorted using the bubble sort algorithm, sorts in ascending order
+     * The bubble sort algorithm, sorts an array of values in ascending order by "bubbling down" the largest element through swapping, then repeating the process
+     * @param <T> the data type of the array being sorted, must implement Comparable
+     * @param theArray the array to be sorted
      */
     public static <T extends Comparable<T>> void bubbleSort(T[] theArray)
     // Preconditions: Structure is not empty
@@ -98,7 +102,15 @@ public class Algorithms {
                 }
     }
     
+    /**
+     * The insertion sort algorithm, sorts an array of values in ascending order by assuming the first element is sorted, then inserting the other elements to this sorted part.
+     * @param <T> the data type of the array being sorted, must implement Comparable
+     * @param theArray the array to be sorted
+     */
     public static <T extends Comparable<T>> void insertionSort(T[] theArray)
+    // Preconditions: Structure is not empty
+    //                Structure has no null values, or null values are accounted for in such a way that 
+    //                objectInArray.compareTo(null) returns -1, 0, or 1
     {        
         T temp;
         for(int j = 1; j < theArray.length; j++)
@@ -115,7 +127,12 @@ public class Algorithms {
         }
             
     }
-    
+    /**
+     * The greatest common divisor algorithm, calculates the greatest common divisor of two integers a and b.
+     * @param a the first non-negative integer
+     * @param b the second non-negative integer
+     * @return the greatest common divisor of the integers a and b
+     */
     public static int greatestCommonDivisor(int a, int b)
     // Precondition: Both a and b are non-negative integers
     {

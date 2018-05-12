@@ -1,9 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package gui;
+package sourceCode.gui;
 
 /**
  *
@@ -15,17 +10,17 @@ public class SortingFrame extends javax.swing.JFrame
     /**
      * Creates new form SortingFrame
      */
-    public SortingFrame(MainMenuFrame mainMenu, String arrayName, String sortType , data.ComparableArrayHolder toSort) {
+    public SortingFrame(MainMenuFrame mainMenu, String arrayName, String sortType , sourceCode.access.SAHIAccess toSort) {
         initComponents();
         this.mainMenu = mainMenu;
-        if(toSort.getCurSortState() == data.SAHIPlus.SortState.SORTED)
+        if(toSort.getCurSortState() == sourceCode.data.SAHIPlus.SortState.SORTED)
             setInfo(arrayName, sortType, toSort.toString());
         else
         {
             if(sortType.equalsIgnoreCase("Bubble Sort"))
-                toSort.sort(data.SAHIPlus.SortType.BUBBLE);
+                toSort.sort(sourceCode.data.SAHIPlus.SortType.BUBBLE);
             else if(sortType.equalsIgnoreCase("Insertion Sort"))
-                toSort.sort(data.SAHIPlus.SortType.INSERTION);
+                toSort.sort(sourceCode.data.SAHIPlus.SortType.INSERTION);
             setInfo(arrayName, sortType, toSort.toString());
         }
         
@@ -57,6 +52,7 @@ public class SortingFrame extends javax.swing.JFrame
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Sorting Results");
+        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 windowClosingEvt(evt);

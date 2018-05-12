@@ -1,9 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package gui;
+package sourceCode.gui;
 
 /**
  *
@@ -19,14 +14,8 @@ public class StoreArrayFrame extends javax.swing.JFrame
     public StoreArrayFrame(MainMenuFrame mainMenu) {
         initComponents();
         MAIN_MENU = mainMenu;
-        setAllToolTips();
     }
 
-    private void setAllToolTips() {
-        arrayNameLbl.setToolTipText(".");
-        submitBtn.setToolTipText("Stores the array with the properties chosen.");
-        backBtn.setToolTipText("Closes this window and returns you back to the \"Array or Integer?\" window.");
-    }
     
     /**
      * This method is called from within the constructor to initialize the form. WARNING: Do NOT modify this code. The content of this method is always
@@ -48,6 +37,7 @@ public class StoreArrayFrame extends javax.swing.JFrame
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Store An Array");
+        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 windowClosingEvt(evt);
@@ -182,7 +172,7 @@ public class StoreArrayFrame extends javax.swing.JFrame
             return;
         }
         
-        data.SAHIPlus<Integer> theArray = access.DAO.getCompareableArrayHolder(size);
+        sourceCode.access.SAHIAccess<Integer> theArray = sourceCode.access.DAO.getCompareableArrayHolder(size);
         String theName = arrayNameTxtField.getText();
         java.util.Random rand = new java.util.Random();
         
